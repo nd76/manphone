@@ -1,0 +1,49 @@
+{
+  "name": "ManPhone Dev",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "msjsdiag.vscode-react-native",
+        "bradlc.vscode-tailwindcss",
+        "supabase.vscode-supabase-extension",
+        "eamodio.gitlens",
+        "ms-vscode.remote-explorer"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "explicit"
+        }
+      }
+    }
+  },
+  "forwardPorts": [8081, 19000, 19001, 19002],
+  "portsAttributes": {
+    "8081": {
+      "label": "Metro Bundler",
+      "onAutoForward": "notify"
+    },
+    "19000": {
+      "label": "Expo Dev Server",
+      "onAutoForward": "notify"
+    },
+    "19001": {
+      "label": "Expo Manifest",
+      "onAutoForward": "notify"
+    },
+    "19002": {
+      "label": "Expo DevTools",
+      "onAutoForward": "notify"
+    }
+  },
+  "postCreateCommand": "npm install -g @anthropic-ai/claude-code eas-cli && echo '✅ Setup complete. Run: claude-code' && node --version && npm --version",
+  "remoteUser": "node"
+}
